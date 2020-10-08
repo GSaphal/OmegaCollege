@@ -40,11 +40,27 @@ class LibraryController extends Controller
      */
     public function store(Request $request)
     {
-      
+    
         $library=new Library();
         $library->book_name=$request->book_name;
         $library->author=$request->author;
         $library->grade=$request->grade;
+        if($request->faculty==="0" || $request->faculty==="4")
+        {
+            $request->faculty="Science";
+        } else if($request->faculty==="1" || $request->faculty==="5")
+        {
+            $request->faculty="Management";
+
+        }else if($request->faculty==="2")
+        {
+            $request->faculty="Humanities";
+
+        }
+        else if($request->faculty==="3")
+        {
+            $request->faculty="Law";
+        }
         $library->faculty=$request->faculty;
         $library->stream=$request->stream;
         $book = $request->file('book');
@@ -54,7 +70,6 @@ class LibraryController extends Controller
       $library->save();
       return redirect('/library')->with('success','Book added successfully!');
     }
-
     /**
      * Display the specified resource.
      *
@@ -63,7 +78,7 @@ class LibraryController extends Controller
      */
     public function show($id)
     {
-        //
+  
     }
 
     /**
@@ -98,5 +113,11 @@ class LibraryController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function search(Request $request)
+    {
+        $library=Library::where('book_name', 'LIKE', "%{$request->search}%")->get();;
+
+        return view('backend.library.index',compact('library'));
     }
 }

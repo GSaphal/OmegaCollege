@@ -26,6 +26,31 @@
             background:white!important;
             color:black !important;
         }
+        .book-card{
+            max-height:300px;
+            position:relative;
+
+        }
+        .book-card:hover .book-card-overlay{
+            display:block!important;
+            transition:0.4s all;
+
+        }
+        .book-card-overlay{
+     
+            position:absolute;
+           height:100%;
+                z-index:999999;
+                width:100%;
+            top:0;
+            transition:0.4s all;
+            left:0;
+            display:none!important;
+            background-color:rgba(0,0,0,0.5);
+        }
+        .form-control:disabled, .form-control[readonly]{
+            background:#d3d3d3!important;
+        }
         </style>
     </head>
     <body class="{{ $class ?? '' }}">
@@ -44,12 +69,15 @@
             @yield('content')
         </div>
 
-  
-
         <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
         <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.js"></script>
+        <script src="{{ asset('argon') }}/js/pdfThumbnails.js"></script>
+        <script src="{{asset('assets/js/bootnavbar.js')}}"></script>
+
         @stack('js')
+     
+
         <script src="https://cdn.tiny.cloud/1/i1grmxt9xusb895scs4338ctev5gg2qkc3hkbgrpq2tpy43r/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>                <script type="text/javascript">
                 tinymce.init({
                     selector: '#mytextarea'

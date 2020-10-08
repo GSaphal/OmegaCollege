@@ -121,7 +121,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/library">
+                    <a class="nav-link" href="/library">
                         <i class="ni ni-books text-red"></i>E-Library
                     </a>
                 </li>

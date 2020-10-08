@@ -19,6 +19,9 @@
         <!-- Argon CSS -->
         <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
         <style>
+        .bg-gradient-primary{
+            background:#752B90!important;
+        }
         .form-control:disabled, .form-control[readonly]{
             background:white!important;
             color:black !important;

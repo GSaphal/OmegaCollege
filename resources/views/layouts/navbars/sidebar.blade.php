@@ -122,7 +122,17 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/library">
-                        <i class="ni ni-books text-red"></i>E-Library
+                        <i class="ni ni-atom text-red"></i>E-Library
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/digital-library">
+                        <i class="ni ni-tv-2 text-red"></i>Digital Library
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/public-library">
+                        <i class="ni ni-world text-red"></i>Public Library
                     </a>
                 </li>
             </ul> 

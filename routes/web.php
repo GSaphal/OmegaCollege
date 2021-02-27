@@ -60,7 +60,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('admin/events','Backend\EventController');
 	Route::resource('admin/admission','Backend\AdmissionController');
 	Route::resource('/library','Backend\LibraryController');
+	Route::resource('/digital-library','Backend\DigitalLibraryController');
+
 	Route::get('/library/search/data','Backend\LibraryController@search');
+	Route::get('/library/filter/data','Backend\LibraryController@filter');
+	Route::resource('/public-library','Backend\PublicLibraryController');
+	Route::get('/public-library/search/data','Backend\PublicLibraryController@search');
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'User\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'User\ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'User\ProfileController@password']);

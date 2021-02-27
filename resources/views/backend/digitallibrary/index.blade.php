@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-E-Library | Omega Secondary School
+Digital Library | Omega Secondary School
 @endsection
 @section('content')
     @include('layouts.headers.cards')
@@ -14,11 +14,11 @@ E-Library | Omega Secondary School
                <div class="card-header border-0">
                    <div class="row align-items-center">
                        <div class="col">
-                           <h3 class="mb-0">E-Library</h3>
+                           <h3 class="mb-0">Digital Library</h3>
                        </div>
                      
                        <div class="col text-right">
-                           <a href="{{route('library.create')}}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Add a Book</a>
+                           <a href="{{route('digital-library.create')}}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Add a Video</a>
                        </div>
                    </div>
                    <div class="row pt-2">
@@ -113,27 +113,27 @@ E-Library | Omega Secondary School
                       
                      
                 </div>
-                <h3 class="pt-4">Found {{$library->count()}} results</h3>
         
 
                 <div class="row mt-5">
-                @foreach($library as $l)
-          <a href="{{route('library.show',$l->id)}}" target="_blank">
-                      <div class="card mx-1 book-card mb-3 mx-2" style="width: 18rem;">
-                        <img class="card-img-top" src="{{asset('/images/'.$l->book_thumbnails)}}" alt="Card image cap">
-                        <div class="book-card-overlay text-center" style="padding-top:130px;color:white;font-weight:700;">
-                        {{$l->book_name}}<br>   
+               
+                @foreach($digital_library as $dl)
+        
+    
+          <div class="card mx-1 book-card mb-3 mx-2" style="width: 12rem;">
+          <iframe src="{{$dl->video_link}}" ></iframe>
+
+                    <div class="book-card-overlay text-center" style="padding-top:100px;color:white;font-weight:700;">
+                        <button>Delete</button>
                           
-                         <form method="POST" action="{{route('library.destroy',$l->id)}}">@csrf{{method_field('DELETE')}}<button type="submit" class="btn btn-danger mt-3 py-2 px-2" onclick="return confirm('Do you want to delete this book?')"><i class="far fa-trash-alt px-2"></i></button></form>
 </div>
 </div>
-</a>
+
+
    
 
         
                 @endforeach
-
-          
                 </div>
 <!-- /.row -->
 

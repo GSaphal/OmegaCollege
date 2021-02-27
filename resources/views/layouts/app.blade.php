@@ -26,8 +26,11 @@
             background:white!important;
             color:black !important;
         }
+        .modal-body{
+            padding:1rem!important;
+        }
         .book-card{
-            max-height:300px;
+    
             position:relative;
 
         }
@@ -51,9 +54,19 @@
         .form-control:disabled, .form-control[readonly]{
             background:#d3d3d3!important;
         }
+.btn-primary{
+    background:#752B90;
+    border-color:#752B90;
+}
+.btn-primary:hover{
+    background:#752B90;
+    border-color:#752B90;
+    }
         </style>
     </head>
-    <body class="{{ $class ?? '' }}">
+    <body onload="loadFunction()" class="{{ $class ?? '' }}">
+    <div id="preloader"></div>
+
         @auth()
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
@@ -71,10 +84,8 @@
 
         <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
         <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.js"></script>
-        <script src="{{ asset('argon') }}/js/pdfThumbnails.js"></script>
         <script src="{{asset('assets/js/bootnavbar.js')}}"></script>
-
+        <script src="{{asset('assets/js/main.js')}}"></script>
         @stack('js')
      
 
@@ -99,6 +110,14 @@
                     });
                 </script>
         <!-- Argon JS -->
+        <script>
+        
+            var preloader = document.getElementById("preloader");
+            function loadFunction() {
+                preloader.style.display = "none";
+            }
+
+        </script>
         <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
     </body>
 </html>

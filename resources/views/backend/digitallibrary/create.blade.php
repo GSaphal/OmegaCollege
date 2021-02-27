@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Add a Book | Omega Secondary School
+Add a Video | Omega Secondary School
 @endsection
 
 @push('js')
@@ -91,37 +91,26 @@ function populateSelectTwo( parentKey ){
                 <div class="card bg-secondary shadow">
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
-                            <h3 class="col-12 mb-0">Add a Book</h3>
+                            <h3 class="col-12 mb-0">Add a Video</h3>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('library.store') }}"encType="multipart/form-data" autocomplete="off">
+                        <form method="POST" action="{{ route('digital-library.store') }}"encType="multipart/form-data" autocomplete="off">
                             @csrf
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group{{ $errors->has('book_name') ? ' has-danger' : '' }}">
-                                        <label class="form-control-label" for="input-book_name">Book Name</label>
-                                        <input type="text" name="book_name" id="input-book_name" class="form-control form-control-alternative{{ $errors->has('book_name') ? ' is-invalid' : '' }}" placeholder="{{ __('Book Title') }}" value="" required autofocus>
+                                    <div class="form-group{{ $errors->has('video_link') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label" for="input-video_link">Video Link</label>
+                                        <input type="text" name="video_link" id="input-video_link" class="form-control form-control-alternative{{ $errors->has('video_link') ? ' is-invalid' : '' }}" placeholder="{{ __('Paste a video link here.') }}" value="" required autofocus>
                         
-                                        @if ($errors->has('book_name'))
+                                        @if ($errors->has('video_link'))
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('book_name') }}</strong>
+                                                <strong>{{ $errors->first('video_link') }}</strong>
                                             </span>
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group{{ $errors->has('author') ? ' has-danger' : '' }}">
-                                        <label class="form-control-label" for="input-author">Author</label>
-                                        <input type="text" name="author" id="input-author" class="form-control form-control-alternative{{ $errors->has('author') ? ' is-invalid' : '' }}" placeholder="{{ __('Name of Author') }}" value=""  autofocus>
                         
-                                        @if ($errors->has('author'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('author') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
                                 <div class="col-md-6">
                                  <div class="form-group{{ $errors->has('grade') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="input-grade">Grade</label>
@@ -166,27 +155,12 @@ function populateSelectTwo( parentKey ){
                                     </div>
                                 </div>
 
-                                <div class="col-md-12">
-
-                                        <label class="form-control-label" for="input-news_image" >Select a Book</label>
-                                        <br>
-                        
-                                        @if ($errors->has('book'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('book') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                    <input type="file" class="form-control" name="book" id="book" accept="application/pdf" />
-
-                                </div>
-                   
                             </div>
                           
                           
 
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-success mt-4 mb-5">Add a Book</button>
+                                    <button type="submit" class="btn btn-success mt-4 mb-5">Add a Video</button>
                                 </div>
                           
                         </form>
